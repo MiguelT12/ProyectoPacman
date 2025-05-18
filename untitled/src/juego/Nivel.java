@@ -4,20 +4,24 @@ import multimedia.*;
 
 import java.util.ArrayList;
 
-public class Coordinador implements Dibujable {
+public class Nivel implements Dibujable {
     private EstadoJuego estado;
     private Mapa mapa;
     private Pacman pacman;
     private ArrayList<Fantasma> fantasmas = new ArrayList<>();
     private Lienzo lienzo;
     private Teclado teclado;
+    FabricaNiveles niveles = new FabricaNiveles();
 
-    public Coordinador(Lienzo lienzo, Teclado teclado) {
+
+    public Nivel(Lienzo lienzo, Teclado teclado, int numNivel) {
         this.lienzo = lienzo;
         this.teclado = teclado;
 
         estado = new EstadoJuego(lienzo);
         mapa = new Mapa(lienzo);
+
+        mapa.setMapa(niveles.getMapa(numNivel));
 
         situarActores();
         mapa.generarPuntos();

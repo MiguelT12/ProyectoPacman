@@ -20,14 +20,14 @@ public class Principal {
         Color colorFondo = Color.BLACK;
 
         VentanaMultimedia ventana = new VentanaMultimedia("PacMan", anchoVentana, altoVentana, tamPixel, colorFondo);
-        Coordinador coordinador = new Coordinador(ventana, ventana.getTeclado());
+        Nivel juego = new Nivel(ventana, ventana.getTeclado(), 2);
 
         try {
             while (true) {
-                coordinador.dibujar();
+                juego.dibujar();
 
                 ventana.getTeclado().tick();
-                coordinador.tick();
+                juego.tick();
 
                 espera(MILLIS);
             }
@@ -36,7 +36,7 @@ public class Principal {
         } catch (SalirDelJuegoException e) {
             System.out.println("Has elegido salir del juego.");
         } finally {
-            coordinador.dibujar();
+            juego.dibujar();
         }
     }
 }

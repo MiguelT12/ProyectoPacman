@@ -1,7 +1,7 @@
 package juego;
 
 import multimedia.*;
-import java.awt.*;
+
 import java.awt.event.KeyEvent;
 
 public class Pacman extends Actor {
@@ -9,7 +9,7 @@ public class Pacman extends Actor {
     private Teclado teclado;
     private Mapa mapa;
 
-    public Pacman(Coordinador coordinador, Lienzo lienzo, Teclado teclado, Mapa mapa, EstadoJuego estado) {
+    public Pacman(Nivel coordinador, Lienzo lienzo, Teclado teclado, Mapa mapa, EstadoJuego estado) {
         super("Pacman32.png", coordinador, lienzo, mapa);
         this.estado = estado;
         this.teclado = teclado;

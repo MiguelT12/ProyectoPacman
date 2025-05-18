@@ -7,13 +7,13 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class Actor implements Dibujable {
-    protected Coordinador coordinador;
+    protected Nivel coordinador;
     private Lienzo lienzo;
     protected Image imagen;
     protected Posicion posicion;
     protected Mapa mapa;
 
-    public Actor(String nombreFicheroImagen, Coordinador coordinador, Lienzo lienzo, Mapa mapa) {
+    public Actor(String nombreFicheroImagen, Nivel coordinador, Lienzo lienzo, Mapa mapa) {
         this.coordinador = coordinador;
         this.mapa = mapa;
 
