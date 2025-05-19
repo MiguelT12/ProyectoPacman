@@ -136,12 +136,14 @@ public class VentanaMultimedia extends JFrame implements Lienzo {
     public void escribirTexto(int x, int y, String texto, Color color) {
         int col = x;
         int fil = y;
+        Font fuente = new Font("Arial",Font.BOLD, 24);
 
         // Actualmente, la altura del texto puede sobrepasar la altura
         // de un pixel y, en este momento, no sé cómo se ajusta.
         // Habrá que hacer un imagenG2D.getFont(), modificar el font
         // y finalmente un setFont(), pero no sé cómo modificar el font.
 
+        imagenG2D.setFont(fuente);
         imagenG2D.setColor(color);
 
         // Se realiza un ajuste ya que la posición indicada corresponde al

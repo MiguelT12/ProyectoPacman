@@ -26,6 +26,15 @@ public class Mapa implements Dibujable {
         }
     }
 
+    public boolean mapaCompletado(){
+        for(int i = 0; i < mapa.length; i++){
+            for(int j = 0; j < mapa[i].length; j++){
+                if (mapa[i][j] == '.') return false;
+            }
+        }
+        return true;
+    }
+
     public void setMapa(char[][] mapa) {
         this.mapa = mapa;
     }
@@ -72,6 +81,18 @@ public class Mapa implements Dibujable {
     // TODO Esto del destino está hecho raro... Lo suyo sería que el actor se moviera hacia donde sea, o que, si no se puede, se lanzase una excepción y gestionarla. Pero esto de estar usando Posiciones de usar y tirar no mola.
     public Posicion calcularDestino(Posicion actual, Direccion dir) {
         Posicion nueva = actual.desplazar(dir);
+
+        int x = nueva.getX();
+        int y = nueva.getY();
+
+        if (x < 0) x = getAncho() - 1;
+        else if (x >= getAncho()) x = 0;
+
+        if (y < 0) y = getAlto() - 1;
+        else if (y >= getAlto()) y = 0;
+
+        nueva = new Posicion(x, y);
+
         if (esTransitable(nueva)) return nueva;
         return actual;
     }

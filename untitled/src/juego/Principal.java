@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class Principal {
     private static final int MILLIS = 150;
+    private static int nivelAtual = 1;
 
     public static void espera(int milisegundos) {
         try {
@@ -19,14 +20,13 @@ public class Principal {
         int tamPixel = 30;
         Color colorFondo = Color.BLACK;
 
+
         VentanaMultimedia ventana = new VentanaMultimedia("PacMan", anchoVentana, altoVentana, tamPixel, colorFondo);
-        Nivel juego = new Nivel(ventana, ventana.getTeclado(), 2);
+        Nivel juego = new Nivel(ventana, ventana.getTeclado(), nivelAtual);
 
         try {
             while (true) {
                 juego.dibujar();
-
-                ventana.getTeclado().tick();
                 juego.tick();
 
                 espera(MILLIS);

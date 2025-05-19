@@ -10,7 +10,7 @@ public class Fantasma extends Actor {
     private final Pacman pacman;
 
     public Fantasma(Nivel coordinador, Lienzo lienzo, Pacman pacman, Mapa mapa) {
-        super("FantasmaNaranja32.png", coordinador, lienzo, mapa);
+        super("FantasmaAzul32.png", coordinador, lienzo, mapa);
         this.pacman = pacman;
         posicion = coordinador.obtenerPosicionVaciaAleatoria();
     }

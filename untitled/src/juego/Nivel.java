@@ -13,7 +13,6 @@ public class Nivel implements Dibujable {
     private Teclado teclado;
     FabricaNiveles niveles = new FabricaNiveles();
 
-
     public Nivel(Lienzo lienzo, Teclado teclado, int numNivel) {
         this.lienzo = lienzo;
         this.teclado = teclado;
@@ -25,6 +24,10 @@ public class Nivel implements Dibujable {
 
         situarActores();
         mapa.generarPuntos();
+    }
+
+    public boolean mapaCompletado(){
+        return mapa.mapaCompletado();
     }
 
     public void setLienzo(Lienzo lienzo) {
