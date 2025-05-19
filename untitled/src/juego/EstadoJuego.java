@@ -30,6 +30,6 @@ public class EstadoJuego implements Dibujable {
     }
 
     public void dibujar() {
-        lienzo.escribirTexto(0, 0, "Puntuación: " + puntuacion, Color.GREEN);
+        lienzo.escribirTexto(1, 14, "Puntuación: " + puntuacion, Color.RED);
     }
 }
