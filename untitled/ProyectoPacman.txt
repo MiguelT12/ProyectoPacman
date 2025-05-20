@@ -1,0 +1,85 @@
+Programación 
+
+Vamos a crear nuevos fantasmas.
+
+Lo primero es hacer la clase fantasma abstracta
+
+Detectar que nos hemos comido todas las monedas
+
+Hacer un final de juego
+
+Podemos reiniciar el juego o hacer otro nivel
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lo que me gustaría implementar:
+
+- Nuevos niveles (al menos 1)
+- Cambiar los colores y retocar el tamaño de fantasmas, monedas, etc
+- Sonidos
+- Modo "Invencible", como en el juego real, cuando coges una fruta tienes unos segundos para comerte a los fantasmas (poco probable)
+- Teletransporte para que cuando salga por un lado, aparezca en el contrario
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CAMBIOS(19/05):
+
+- Tamaño y color del texto, he cambiado escribirTexto en VentanaMultimedia y dibujar en EstadoJuego
+- Nueva clase GestorNiveles (aun no funciona porque tengo que arreglar para que cambie de nivel)
+- Cambio en calcularDestino(Mapa) para poder teletransportar si pacman sale por la izq vuelva por la der y viceversa
+- Cambios en FabricaNiveles
+- Añado mapaCompletado en Nivel
+- En el main he intentado hacer lo del cambio de niveles pero no (comentario)
+
+try {
+            while (true) {
+                juego.dibujar();
+                ventana.getTeclado().tick();
+                juego.tick();
+
+                if (juego.mapaCompletado()){
+                    nivelAtual++;
+                    juego = new Nivel(ventana, ventana.getTeclado(), nivelAtual);
+                }
+                espera(MILLIS);
+            }
+Esto habría que cambiarlo, pero no lo commiteo.
+
+-------------------CAMBIOS(20/05):
+
+Primer commit:
+- En el principal he creado dos variables para controlar el nivel y el limite de puntuación para cambiar de nivel
+- He añadido un nuevo mapa. 
+- Finalmente en el try he implementado: 
+	if (juego.getPuntuacion() >= limitePuntuacion) {
+            nivelActual++;
+            juego = new Nivel(ventana, ventana.getTeclado(), nivelActual);
+            }
+- Y en nivel he creado un public int getPuntuacion para calcular que cuando Pacman haya cogido todas las monedas del mapa cambie de mapa.
+
+Segundo commit:
+- He borrado el mapaCompletado de la clase Mapa 
+- Creado la imagen de la fruta igual que con las otras imágenes
+- También he tenido que redimensionar la imagen a 32x32 px.
+
+FALTA CREAR ALGO PARA CUANDO TERMINE EL TERCER MAPA Y HACER QUE LA FRUTA HAGA ALGO
+
+-------------------CAMBIOS(21/05): 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
