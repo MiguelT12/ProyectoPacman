@@ -26,8 +26,8 @@ public class Nivel implements Dibujable {
         mapa.generarPuntos();
     }
 
-    public boolean mapaCompletado(){
-        return mapa.mapaCompletado();
+    public int getPuntuacion(){
+        return estado.getPuntuacion();
     }
 
     public void setLienzo(Lienzo lienzo) {
