@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Principal {
     private static final int MILLIS = 150;
-    private static int nivelActual = 2;
+    private static int nivelActual = 1;
     private static final int limitePuntuacion = 110;
 
     public static void espera(int milisegundos) {

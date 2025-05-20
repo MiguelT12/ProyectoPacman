@@ -11,6 +11,7 @@ public class Mapa implements Dibujable {
     private static final Color COLOR_SUELO = Color.BLACK;
     private Image imagenMuro;
     private Image imagenMoneda;
+    private Image imagenFruta;
     private char[][] mapa;
 
     private Lienzo lienzo;
@@ -21,18 +22,10 @@ public class Mapa implements Dibujable {
         try {
             this.imagenMuro = ImageIO.read(new File("src/assets/Muro32.png"));
             this.imagenMoneda = ImageIO.read(new File("src/assets/Moneda32.png"));
+            this.imagenFruta = ImageIO.read(new File("src/assets/Uva32.png"));
         } catch (IOException e){
             throw new RuntimeException("No se puede cargar la imagen: " + e);
         }
-    }
-
-    public boolean mapaCompletado(){
-        for(int i = 0; i < mapa.length; i++){
-            for(int j = 0; j < mapa[i].length; j++){
-                if (mapa[i][j] == '.') return false;
-            }
-        }
-        return true;
     }
 
     public void setMapa(char[][] mapa) {
@@ -120,6 +113,7 @@ public class Mapa implements Dibujable {
 
                 if (getContenidoMapa(x, y) == '#') lienzo.dibujarImagen(x, y, this.imagenMuro);
                 else if (getContenidoMapa(x, y) == '·') lienzo.dibujarImagen(x, y, this.imagenMoneda);
+                else if (getContenidoMapa(x, y) == '@') lienzo.dibujarImagen(x, y, this.imagenFruta);
             }
         }
     }
