@@ -10,7 +10,6 @@ public abstract class Actor implements Dibujable {
     protected Nivel coordinador;
     private Lienzo lienzo;
     protected Image imagen;
-    protected Image imagenSuper;
     protected Posicion posicion;
     protected Mapa mapa;
 
@@ -22,7 +21,6 @@ public abstract class Actor implements Dibujable {
 
         try {
             imagen = ImageIO.read(new File("src/assets/" + nombreFicheroImagen));
-            imagenSuper = ImageIO.read(new File("src/assets/FantasmaAzul32.png"));
         } catch (IOException e){
             throw new RuntimeException("No se puede cargar la imagen: " + e);
         }
@@ -43,11 +41,6 @@ public abstract class Actor implements Dibujable {
     }
 
     public void dibujar() {
-        lienzo.dibujarImagen(posicion.getX(), posicion.getY(), imagen);
-    }
-
-    public void dibujar(boolean modoSuperAdmin) {
-        Image imagen = modoSuperAdmin ? imagenSuper : this.imagen;
         lienzo.dibujarImagen(posicion.getX(), posicion.getY(), imagen);
     }
 }

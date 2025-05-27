@@ -9,32 +9,23 @@ import java.io.IOException;
 
 public class Mapa implements Dibujable {
     private static final Color COLOR_SUELO = Color.BLACK;
-    private static final Color COLOR_SUELO_SUPER = Color.MAGENTA;
-
     private Image imagenMuro;
     private Image imagenMoneda;
     private Image imagenFruta;
-    private Image imagenMuroAdmin;
     private char[][] mapa;
 
     private Lienzo lienzo;
-    private boolean modoSuperAdmin = false;
 
     public Mapa(Lienzo lienzo) {
         setLienzo(lienzo);
 
         try {
-            this.imagenMuroAdmin = ImageIO.read(new File("src/assets/MuroAdmin32.png"));
             this.imagenMuro = ImageIO.read(new File("src/assets/Muro32.png"));
             this.imagenMoneda = ImageIO.read(new File("src/assets/Moneda32.png"));
             this.imagenFruta = ImageIO.read(new File("src/assets/Uva32.png"));
         } catch (IOException e){
             throw new RuntimeException("No se puede cargar la imagen: " + e);
         }
-    }
-
-    public void setModoSuperAdmin(boolean activo){
-        this.modoSuperAdmin = activo;
     }
 
     public void setMapa(char[][] mapa) {
@@ -115,23 +106,12 @@ public class Mapa implements Dibujable {
         setContenidoMapa(posicion, ' ');
     }
 
-    public boolean hayFruta(Posicion posicion){
-        return getContenidoMapa(posicion) == '@';
-    }
-
-    public void retirarFruta(Posicion posicion){
-        setContenidoMapa(posicion, ' ');
-    }
-
     public void dibujar() {
         for (int x = 0; x < getAncho(); x++) {
             for (int y = 0; y < getAlto(); y++) {
-                lienzo.marcarPixel(x, y, modoSuperAdmin ? COLOR_SUELO_SUPER : COLOR_SUELO);
+                lienzo.marcarPixel(x, y, COLOR_SUELO);
 
-                if (getContenidoMapa(x, y) == '#'){
-                    if (modoSuperAdmin) lienzo.dibujarImagen(x, y, imagenMuroAdmin);
-                    else lienzo.dibujarImagen(x, y, imagenMuro);
-                }
+                if (getContenidoMapa(x, y) == '#') lienzo.dibujarImagen(x, y, this.imagenMuro);
                 else if (getContenidoMapa(x, y) == '·') lienzo.dibujarImagen(x, y, this.imagenMoneda);
                 else if (getContenidoMapa(x, y) == '@') lienzo.dibujarImagen(x, y, this.imagenFruta);
             }

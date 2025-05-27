@@ -8,7 +8,6 @@ import java.awt.*;
 public class EstadoJuego implements Dibujable {
     private int puntuacion;
     private Lienzo lienzo;
-    private int contadorSuperAdmin = 0;
 
     public EstadoJuego(Lienzo lienzo) {
         setLienzo(lienzo);
@@ -30,12 +29,7 @@ public class EstadoJuego implements Dibujable {
         this.lienzo = lienzo;
     }
 
-    public void setContadorSuperAdmin(int contador){
-        this.contadorSuperAdmin = contador;
-    }
-
     public void dibujar() {
-        lienzo.escribirTexto(1, 0, "Puntuación: " + puntuacion, Color.RED);
-        if (contadorSuperAdmin > 0) lienzo.escribirTexto(1, 14, "Tiempo: " + contadorSuperAdmin, Color.BLACK);
+        lienzo.escribirTexto(1, 14, "Puntuación: " + puntuacion, Color.RED);
     }
 }
