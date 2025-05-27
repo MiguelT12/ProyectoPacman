@@ -66,10 +66,16 @@ public class Nivel implements Dibujable {
 
     public void tick() throws PacmanComidoException, SalirDelJuegoException {
         pacman.tick();
+        estado.setContadorSuperAdmin(pacman.getContadorModoSuperAdmin());
 
         if (mapa.hayPunto(pacman.getPosicion())) {
             estado.incrementarPuntuacion();
             mapa.retirarPunto(pacman.getPosicion());
+        }
+
+        if (mapa.hayFruta(pacman.getPosicion())) {
+            mapa.retirarFruta(pacman.getPosicion());
+            pacman.activarModoSuperAdmin();
         }
 
         for (Fantasma fantasma : fantasmas) {
@@ -79,7 +85,6 @@ public class Nivel implements Dibujable {
 
     public void dibujar() {
         lienzo.limpiar();
-
         mapa.dibujar();
         pacman.dibujar();
 
@@ -88,7 +93,6 @@ public class Nivel implements Dibujable {
         }
 
         estado.dibujar();
-
         lienzo.volcar();
     }
 }
