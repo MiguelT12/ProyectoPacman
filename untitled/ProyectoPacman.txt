@@ -64,11 +64,23 @@ Segundo commit:
 
 FALTA CREAR ALGO PARA CUANDO TERMINE EL TERCER MAPA Y HACER QUE LA FRUTA HAGA ALGO
 
--------------------CAMBIOS(21/05): 
+-------------------CAMBIOS(27/05): 
 
+- Método para detectar si hay fruta (en el mapa: @)
+- Método retirar fruta para que cuando Pacman pase por encima se la coma
+- Cambios en los tick de Fantasma, Nivel y Pacman:
+   - En Nivel: Si se activa el modoSuperAdmin, llama a Pacman para comprobar cuantos ticks le quedan y a EstadoJuego para escribir el contador
+   - En Fantasma: Dependiendo del modo, tiene una velocidad u otra, cuando el contadorTicks llega a la velocidad(el tiempo que tiene que esperar para moverse), el fantasma se mueve 
+   - En Pacman: Simplemente llama al contador para ir avisando de cuanto queda y va restando ticks, cuando llega a 0 se quita
 
+- El modoSuperAdmin está implementado y hasta el momento estos son los cambios: cambio de foto del muro, color de fondo, color de los fantasmas e implementación de un contador
+   - Cambio de foto del muro
+   - Color de fondo
+   - Color de fantasmas
+   - Contador para tiempo restante
+   - Velocidad de los fantasmas
 
-
+- Cambio en Dibujar(Actor), hay dos metodos dibujar pero falta cambiar eso para que solo hay uno, basicamente decide que imagen poner cuando está el modo superAdmin
 
 
 
