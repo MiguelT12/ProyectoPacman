@@ -2,6 +2,7 @@ package juego;
 
 import multimedia.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Nivel implements Dibujable {
@@ -11,6 +12,8 @@ public class Nivel implements Dibujable {
     private ArrayList<Fantasma> fantasmas = new ArrayList<>();
     private Lienzo lienzo;
     private Teclado teclado;
+    private static final Sonido SONIDO_COMER = new Sonido();
+    private static final Sonido SONIDO_INTRO = new Sonido();
     FabricaNiveles niveles = new FabricaNiveles();
 
     public Nivel(Lienzo lienzo, Teclado teclado, int numNivel) {
@@ -24,9 +27,10 @@ public class Nivel implements Dibujable {
 
         situarActores();
         mapa.generarPuntos();
+        SONIDO_COMER.cargarSonido("src/assets/comerMoneda.wav");
     }
 
-    public int getPuntuacion(){
+    public int getPuntuacion() {
         return estado.getPuntuacion();
     }
 
@@ -71,6 +75,7 @@ public class Nivel implements Dibujable {
         if (mapa.hayPunto(pacman.getPosicion())) {
             estado.incrementarPuntuacion();
             mapa.retirarPunto(pacman.getPosicion());
+            SONIDO_COMER.reproducir();
         }
 
         if (mapa.hayFruta(pacman.getPosicion())) {
@@ -94,5 +99,13 @@ public class Nivel implements Dibujable {
 
         estado.dibujar();
         lienzo.volcar();
+    }
+
+    public void iniciarIntro() {
+        lienzo.limpiar();
+        lienzo.volcar();
+
+        SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
+        SONIDO_INTRO.reproducir();
     }
 }

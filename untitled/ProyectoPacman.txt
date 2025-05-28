@@ -82,7 +82,12 @@ FALTA CREAR ALGO PARA CUANDO TERMINE EL TERCER MAPA Y HACER QUE LA FRUTA HAGA AL
 
 - Cambio en Dibujar(Actor), hay dos metodos dibujar pero falta cambiar eso para que solo hay uno, basicamente decide que imagen poner cuando está el modo superAdmin
 
+-------------------CAMBIOS(28/05): 
 
+- Sonido al comer una moneda implementado
+- Sonido al iniciar el juego implementado
+- Se crea una clase sonido, con tres métodos(cargarSonido, reproducir y detener). En la clase nivel se crean dos variables sonidos (comer e intro), la de intro se inicializa en el constructor y la otra en un método para reproducirse cuando se inicia en el juego(en el main: juego.iniciarIntro)
+- Se añaden los sonidos(.wav)
 
 
 

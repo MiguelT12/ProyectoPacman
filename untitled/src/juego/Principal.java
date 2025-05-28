@@ -24,6 +24,8 @@ public class Principal {
         VentanaMultimedia ventana = new VentanaMultimedia("PacMan", anchoVentana, altoVentana, tamPixel, colorFondo);
         Nivel juego = new Nivel(ventana, ventana.getTeclado(), nivelActual);
 
+        juego.iniciarIntro();
+
         try {
             while (true) {
                 juego.dibujar();
