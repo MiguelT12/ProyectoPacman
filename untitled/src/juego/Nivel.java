@@ -14,11 +14,13 @@ public class Nivel implements Dibujable {
     private Teclado teclado;
     private static final Sonido SONIDO_COMER = new Sonido();
     private static final Sonido SONIDO_INTRO = new Sonido();
+    private int numeroNivel;
     FabricaNiveles niveles = new FabricaNiveles();
 
     public Nivel(Lienzo lienzo, Teclado teclado, int numNivel) {
         this.lienzo = lienzo;
         this.teclado = teclado;
+        this.numeroNivel = numNivel;
 
         estado = new EstadoJuego(lienzo);
         mapa = new Mapa(lienzo);
@@ -41,8 +43,10 @@ public class Nivel implements Dibujable {
     private void situarActores() {
         pacman = new Pacman(this, lienzo, teclado, mapa, estado);
 
+        int velocidad = (numeroNivel == 1) ? 4 : 2;
+
         for (int i = 0; i < 3; i++) {
-            fantasmas.add(new Fantasma(this, lienzo, pacman, mapa));
+            fantasmas.add(new Fantasma(this, lienzo, pacman, mapa, velocidad));
         }
     }
 
@@ -102,9 +106,6 @@ public class Nivel implements Dibujable {
     }
 
     public void iniciarIntro() {
-        lienzo.limpiar();
-        lienzo.volcar();
-
         SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
         SONIDO_INTRO.reproducir();
     }

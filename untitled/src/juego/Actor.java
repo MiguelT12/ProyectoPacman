@@ -37,13 +37,12 @@ public abstract class Actor implements Dibujable {
     }
 
     public void mover(Direccion dir) throws MovimientoInvalidoException {
-        Posicion destino = mapa.calcularDestino(posicion, dir);
-        if (destino.equals(posicion)) throw new MovimientoInvalidoException("Movimiento no válido.");
-        this.posicion = destino;
+        this.posicion = mapa.calcularDestino(posicion, dir);
     }
 
     public void dibujar() {
         lienzo.dibujarImagen(posicion.getX(), posicion.getY(), imagen);
+        //Alternativa: dibujar(false)
     }
 
     public void dibujar(boolean modoSuperAdmin) {

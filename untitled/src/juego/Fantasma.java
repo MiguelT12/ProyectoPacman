@@ -9,13 +9,15 @@ public class Fantasma extends Actor {
     private final Pacman pacman;
 
     private int contadorTicks = 0;
-    private int velocidadNormal = 1;
+    private int velocidadNormal;
     private int velocidadModoSuper = 3;
     private int velocidadActual;
 
-    public Fantasma(Nivel coordinador, Lienzo lienzo, Pacman pacman, Mapa mapa) {
+    public Fantasma(Nivel coordinador, Lienzo lienzo, Pacman pacman, Mapa mapa, int velocidad) {
         super("FantasmaNaranja32.png", coordinador, lienzo, mapa);
         this.pacman = pacman;
+        this.velocidadNormal = velocidad;
+        this.velocidadActual = velocidad;
         posicion = coordinador.obtenerPosicionVaciaAleatoria();
     }
 
