@@ -40,10 +40,17 @@ public class Fantasma extends Actor {
             contadorTicks = 0;
         }
 
-        if (this.posicion.equals(pacman.getPosicion())) throw new PacmanComidoException("¡Pacman ha sido comido!");
+        if (this.posicion.equals(pacman.getPosicion())) {
+            if (pacman.modoSuperAdmin()) fantasmaComido();
+            else throw new PacmanComidoException("¡Pacman ha sido comido!");
+        }
     }
 
     public void dibujar() {
         super.dibujar(pacman.modoSuperAdmin());
+    }
+
+    public void fantasmaComido() {
+        this.posicion = nivel.obtenerPosicionVaciaAleatoria();
     }
 }
