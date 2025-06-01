@@ -9,7 +9,7 @@ public class Pacman extends Actor {
     private Teclado teclado;
     private Mapa mapa;
 
-    private static final int DURACION_MODO_SUPER = 40;
+    private static final int DURACION_MODO_SUPER = 35;
     private boolean modoSuperAdmin;
     private int contadorModoSuperAdmin = 0;
 

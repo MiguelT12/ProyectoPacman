@@ -12,9 +12,12 @@ public class Nivel implements Dibujable {
     private ArrayList<Fantasma> fantasmas = new ArrayList<>();
     private Lienzo lienzo;
     private Teclado teclado;
+
     private static final Sonido SONIDO_COMER = new Sonido();
     private static final Sonido SONIDO_INTRO = new Sonido();
     private static final Sonido SONIDO_ADMIN = new Sonido();
+    private static final Sonido SONIDO_FINAL = new Sonido();
+
     private int numeroNivel;
     FabricaNiveles niveles = new FabricaNiveles();
 
@@ -31,6 +34,9 @@ public class Nivel implements Dibujable {
         situarActores();
         mapa.generarPuntos();
         SONIDO_COMER.cargarSonido("src/assets/comerMoneda.wav");
+        SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
+        SONIDO_ADMIN.cargarSonido("src/assets/modoSuperAdmin.wav");
+        SONIDO_FINAL.cargarSonido("src/assets/final.wav");
     }
 
     public int getPuntuacion() {
@@ -108,12 +114,17 @@ public class Nivel implements Dibujable {
     }
 
     public void iniciarIntro() {
-        SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
         SONIDO_INTRO.reproducir();
     }
 
     public void musicaModoAdmin(){
-        SONIDO_ADMIN.cargarSonido("src/assets/modoSuperAdmin.wav");
         SONIDO_ADMIN.reproducir();
+    }
+
+    public void finalJuego(){
+        SONIDO_COMER.detener();
+        SONIDO_ADMIN.detener();
+        SONIDO_INTRO.detener();
+        SONIDO_FINAL.reproducir();
     }
 }

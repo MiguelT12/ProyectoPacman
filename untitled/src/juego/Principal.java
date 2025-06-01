@@ -5,14 +5,14 @@ import java.awt.*;
 
 public class Principal {
     private static final int MILLIS = 150;
+    private static final int LIMITE_PUNTUACION = 110;
+    private static final int MAX_NIVELES = 3;
     private static int nivelActual = 1;
-    private static final int limitePuntuacion = 110;
 
     public static void espera(int milisegundos) {
         try {
             Thread.sleep(milisegundos);
-        } catch (InterruptedException e) {
-        }
+        } catch (InterruptedException e) {}
     }
 
     public static void main(String[] args) {
@@ -31,9 +31,15 @@ public class Principal {
                 juego.dibujar();
                 juego.tick();
 
-                if (juego.getPuntuacion() >= limitePuntuacion) {
-                    nivelActual++;
-                    juego = new Nivel(ventana, ventana.getTeclado(), nivelActual);
+                if (juego.getPuntuacion() >= LIMITE_PUNTUACION) {
+                    if (nivelActual < MAX_NIVELES) {
+                        juego = new Nivel(ventana, ventana.getTeclado(), nivelActual++);
+                    } else {
+                        juego.finalJuego();
+                        System.out.println("¡HAS GANADO!");
+                        System.out.println("Completaste los 3 niveles");
+                        break;
+                    }
                 }
                 espera(MILLIS);
             }
