@@ -17,6 +17,7 @@ public class Nivel implements Dibujable {
     private static final Sonido SONIDO_INTRO = new Sonido();
     private static final Sonido SONIDO_ADMIN = new Sonido();
     private static final Sonido SONIDO_FINAL = new Sonido();
+    private static final Sonido SONIDO_PACMAN_COMIDO = new Sonido();
 
     private int numeroNivel;
     FabricaNiveles niveles = new FabricaNiveles();
@@ -37,6 +38,7 @@ public class Nivel implements Dibujable {
         SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
         SONIDO_ADMIN.cargarSonido("src/assets/modoSuperAdmin.wav");
         SONIDO_FINAL.cargarSonido("src/assets/final.wav");
+        SONIDO_PACMAN_COMIDO.cargarSonido("src/assets/pacmanComido.wav");
     }
 
     public int getPuntuacion() {
@@ -126,5 +128,11 @@ public class Nivel implements Dibujable {
         SONIDO_ADMIN.detener();
         SONIDO_INTRO.detener();
         SONIDO_FINAL.reproducir();
+    }
+
+    public void pacmanComido(){
+        SONIDO_COMER.detener();
+        SONIDO_INTRO.detener();
+        SONIDO_PACMAN_COMIDO.reproducir();
     }
 }

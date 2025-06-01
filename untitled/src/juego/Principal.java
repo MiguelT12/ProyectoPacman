@@ -44,6 +44,7 @@ public class Principal {
                 espera(MILLIS);
             }
         } catch (PacmanComidoException e) {
+            juego.pacmanComido();
             System.out.println("¡Game Over! Te han comido.");
         } catch (SalirDelJuegoException e) {
             System.out.println("Has elegido salir del juego.");

@@ -96,6 +96,7 @@ Falta retocar la intro para que haya una pausa antes de inciar el juego.
 
 - He implementado un sonido/música para cuando Pacman está en el modoSuperAdmin, simplemente creando un método en Nivel y llamándolo cada vez que Pacman coge una fruta, dentro del tick
 - Al igual que el anterior, un sonido para cuando el jugador termina el juego, creando un método en Nivel y llamándolo cuando no quedan monedas
+- Y otro igual para cuando pacman es comido
 - Cambio en Main: cuando el juego detecta que no quedan más monedas y es el último nivel (por eso se añade la variable MAX_NIVELES) reproduce el sonido y manda un mensaje por consola
 - Cambio de la duración del modo super(de 40 a 35) para que cuadre mejor con la música que suena
 
