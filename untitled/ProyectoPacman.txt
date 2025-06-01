@@ -31,18 +31,6 @@ CAMBIOS(19/05):
 - Añado mapaCompletado en Nivel
 - En el main he intentado hacer lo del cambio de niveles pero no (comentario)
 
-try {
-            while (true) {
-                juego.dibujar();
-                ventana.getTeclado().tick();
-                juego.tick();
-
-                if (juego.mapaCompletado()){
-                    nivelAtual++;
-                    juego = new Nivel(ventana, ventana.getTeclado(), nivelAtual);
-                }
-                espera(MILLIS);
-            }
 Esto habría que cambiarlo, pero no lo commiteo.
 
 -------------------CAMBIOS(20/05):
@@ -89,8 +77,24 @@ FALTA CREAR ALGO PARA CUANDO TERMINE EL TERCER MAPA Y HACER QUE LA FRUTA HAGA AL
 - Se crea una clase sonido, con tres métodos(cargarSonido, reproducir y detener). En la clase nivel se crean dos variables sonidos (comer e intro), la de intro se inicializa en el constructor y la otra en un método para reproducirse cuando se inicia en el juego(en el main: juego.iniciarIntro)
 - Se añaden los sonidos(.wav)
 
+Falta retocar la intro para que haya una pausa antes de inciar el juego.
 
+-------------------CAMBIOS(29/05): 
 
+- Cambio en el método calcularDestino(Mapa): Ahora cada vez que el jugador quiera moverse en una dirección y esa dirección no es transitable, internamente se lanza una excepción, obligando a que quien llame a ese método tenga que atrapar la excepción y decidir que hacer.
+- Posible alternativa a los dos métodos dibujar en Actor, ya que el de sin parámetros le puede pasar como false al otro método y quedaría igual
+- Velocidad de los fantasmas: ahora si está en el nivel 1 va más lento y en los otros niveles un poco más rápido. Lo he implementado añadiendo un parámetro al Constructor de Fantasma e inicializando la VelocidadActual con la que le pasan y en el situarActores de Nivel hace un ternario para cambiar la velocidad según el nivel en el que se encuentra. 
+
+-------------------CAMBIOS(30/05): 
+
+- Cuando Pacman está en el modoSuperAdmin, se puede comer a los fantasmas y reaparecen en una posición aleatoria: he cambiado que cuando Pacman está en la misma casilla que el fantasma, ahora comprueba si está en modo admin, y si lo está se puede comer a los fantasmas, si no se acaba el juego.
+- Relacionado con lo anterior, añado el método fantasmaComido(), para que cuando se coma al fantasma reaparezca en una nueva posición vacia 
+- Cambio de nombre de coordinador a nivel
+- Cambio de nombres a las imágenes 
+
+-------------------CAMBIOS(01/06):
+
+- He implementado un sonido/música para cuando Pacman está en el modoSuperAdmin, simplemente creando un método en Nivel y llamándolo cada vez que Pacman coge una fruta, dentro del tick
 
 
 

@@ -14,6 +14,7 @@ public class Nivel implements Dibujable {
     private Teclado teclado;
     private static final Sonido SONIDO_COMER = new Sonido();
     private static final Sonido SONIDO_INTRO = new Sonido();
+    private static final Sonido SONIDO_ADMIN = new Sonido();
     private int numeroNivel;
     FabricaNiveles niveles = new FabricaNiveles();
 
@@ -85,6 +86,7 @@ public class Nivel implements Dibujable {
         if (mapa.hayFruta(pacman.getPosicion())) {
             mapa.retirarFruta(pacman.getPosicion());
             pacman.activarModoSuperAdmin();
+            musicaModoAdmin();
         }
 
         for (Fantasma fantasma : fantasmas) {
@@ -108,5 +110,10 @@ public class Nivel implements Dibujable {
     public void iniciarIntro() {
         SONIDO_INTRO.cargarSonido("src/assets/inicio.wav");
         SONIDO_INTRO.reproducir();
+    }
+
+    public void musicaModoAdmin(){
+        SONIDO_ADMIN.cargarSonido("src/assets/modoSuperAdmin.wav");
+        SONIDO_ADMIN.reproducir();
     }
 }
